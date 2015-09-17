@@ -2,6 +2,11 @@
 
 A [React Transform](https://github.com/gaearon/babel-plugin-react-transform) equivalent to [React Render Visualizer](https://github.com/redsunsoft/react-render-visualizer)
 
+## Requirements
+* React - 0.14-beta1+
+* ReactDOM - 0.14-beta1+
+* A browser that supports [element.animate](http://caniuse.com/#feat=web-animation)
+
 ## Installation
 
 First, install the [Babel plugin](https://github.com/gaearon/babel-plugin-react-transform):
@@ -43,3 +48,6 @@ Components will show up with a blue border box when monitored.
 MIT
 
 This heavily relied on react-render-visualizer for inspiration, and their license is available at [LICENSE](https://github.com/redsunsoft/react-render-visualizer/blob/master/LICENSE)
+
+## How it looks
+![A react transform](http://i.imgur.com/wMJbq28.gif)
