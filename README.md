@@ -1,10 +1,10 @@
 # react-transform-render-visualizer
 
-A [React Transform](https://github.com/gaearon/babel-plugin-react-transform) equivalent to [React Render Visualizer](https://github.com/redsunsoft/react-render-visualizer)
+A [React Transform](https://github.com/gaearon/babel-plugin-react-transform) equivalent to [React Render Visualizer](https://github.com/redsunsoft/react-render-visualizer).
 
 ## Requirements
-* React - 0.14-beta1+
-* ReactDOM - 0.14-beta1+
+* React - 0.14-rc1+
+* ReactDOM - 0.14-rc1+
 * A browser that supports [element.animate](http://caniuse.com/#feat=web-animation)
 
 ## Installation
@@ -31,7 +31,6 @@ It must be an array of the transforms you want to use:
     "react-transform"
   ],
   "extra": {
-    // must be defined and be an array
     "react-transform": [{
       "target": "react-transform-render-visualizer"
     }]
@@ -39,10 +38,11 @@ It must be an array of the transforms you want to use:
 }
 ```
 
-This transform has no effect when `process.env.NODE_ENV` is set to `'production'`.
+This transform is enabled regardless of NODE_ENV. It's up to you to disable in
+a production build.
 
 ## Usage
-Components will show up with a blue border box when monitored.
+Components will show up with a helpful box when monitored. This will attach itself to all components.
 
 ## License
 MIT
