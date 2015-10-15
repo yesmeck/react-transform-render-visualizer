@@ -31,9 +31,11 @@ It must be an array of the transforms you want to use:
     "react-transform"
   ],
   "extra": {
-    "react-transform": [{
-      "target": "react-transform-render-visualizer"
-    }]
+    "react-transform": {
+      "transforms": [{
+        "transform": "react-transform-render-visualizer"
+      }]
+    }
   }
 }
 ```
