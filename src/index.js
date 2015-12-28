@@ -263,21 +263,21 @@ export default function renderVisualizer () {
       addToRenderLog(this, 'Initial Render');
 
       if (old.componentDidMount) {
-        return old.componentDidMount(...arguments);
+        return old.componentDidMount.apply(this, [...arguments]);
       }
     };
     ReactClass.prototype.componentDidUpdate = function (prevProps, prevState) {
       addToRenderLog(this, getReasonForReRender(prevProps, prevState, this.props, this.state));
 
       if (old.componentDidUpdate) {
-        return old.componentDidUpdate(...arguments);
+        return old.componentDidUpdate.apply(this, [...arguments]);
       }
     };
     ReactClass.prototype.componentWillUnmount = function () {
       renders.delete(this);
 
       if (old.componentWillUnmount) {
-        return old.componentWillUnmount(...arguments);
+        return old.componentWillUnmount.apply(this, [...arguments]);
       }
     };
 
