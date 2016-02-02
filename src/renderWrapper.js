@@ -242,11 +242,11 @@ window.setInterval(() => {
 
 ReactDOM.render(React.createElement(RenderLogs, { renders: renders }), containingElement);
 
-export default function createRenderVisualizer(shouldInstrumentComponent) {
+export default function createRenderVisualizer (shouldInstrumentComponent = () => true) {
   return function renderVisualizer () {
     return function wrapRenderVisualizer (ReactClass, componentId) {
 
-      if(typeof shouldInstrumentComponent === 'function' && !shouldInstrumentComponent(ReactClass)) {
+      if (!shouldInstrumentComponent(ReactClass)) {
         return ReactClass;
       }
 

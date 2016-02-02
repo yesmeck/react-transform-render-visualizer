@@ -1,3 +1,3 @@
-module.exports = require('./renderWrapper')(function(ReactClass) {
-  return !!ReactClass.rerenderViz;
-});
+import renderWrapper from './renderWrapper';
+
+export default renderWrapper(ReactClass => !!ReactClass.rerenderViz);
