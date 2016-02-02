@@ -1,3 +1,3 @@
 module.exports = require('./renderWrapper')(function(ReactClass) {
-	return !!ReactClass.rerenderViz;
+  return !!ReactClass.rerenderViz;
 });

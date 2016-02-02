@@ -243,50 +243,50 @@ window.setInterval(() => {
 ReactDOM.render(React.createElement(RenderLogs, { renders: renders }), containingElement);
 
 export default function createRenderVisualizer(shouldInstrumentComponent) {
-	return function renderVisualizer () {
-	  return function wrapRenderVisualizer (ReactClass, componentId) {
+  return function renderVisualizer () {
+    return function wrapRenderVisualizer (ReactClass, componentId) {
 
-			if(typeof shouldInstrumentComponent === 'function' && !shouldInstrumentComponent(ReactClass)) {
-				return ReactClass;
-			}
+      if(typeof shouldInstrumentComponent === 'function' && !shouldInstrumentComponent(ReactClass)) {
+        return ReactClass;
+      }
 
-	    const old = {
-	      componentDidMount: ReactClass.prototype.componentDidMount,
-	      componentDidUpdate: ReactClass.prototype.componentDidUpdate,
-	      componentWillUnmount: ReactClass.prototype.componentWillUnmount
-	    };
+      const old = {
+        componentDidMount: ReactClass.prototype.componentDidMount,
+        componentDidUpdate: ReactClass.prototype.componentDidUpdate,
+        componentWillUnmount: ReactClass.prototype.componentWillUnmount
+      };
 
-	    ReactClass.prototype.componentDidMount = function () {
-	      renders.set(this, {
-	        id: window.__reactRendersCount++,
-	        log: [],
-	        count: 0,
+      ReactClass.prototype.componentDidMount = function () {
+        renders.set(this, {
+          id: window.__reactRendersCount++,
+          log: [],
+          count: 0,
 
-	        posTop: 0,
-	        posLeft: 0
-	      });
-	      addToRenderLog(this, 'Initial Render');
+          posTop: 0,
+          posLeft: 0
+        });
+        addToRenderLog(this, 'Initial Render');
 
-	      if (old.componentDidMount) {
-	        return old.componentDidMount.apply(this, [...arguments]);
-	      }
-	    };
-	    ReactClass.prototype.componentDidUpdate = function (prevProps, prevState) {
-	      addToRenderLog(this, getReasonForReRender(prevProps, prevState, this.props, this.state));
+        if (old.componentDidMount) {
+          return old.componentDidMount.apply(this, [...arguments]);
+        }
+      };
+      ReactClass.prototype.componentDidUpdate = function (prevProps, prevState) {
+        addToRenderLog(this, getReasonForReRender(prevProps, prevState, this.props, this.state));
 
-	      if (old.componentDidUpdate) {
-	        return old.componentDidUpdate.apply(this, [...arguments]);
-	      }
-	    };
-	    ReactClass.prototype.componentWillUnmount = function () {
-	      renders.delete(this);
+        if (old.componentDidUpdate) {
+          return old.componentDidUpdate.apply(this, [...arguments]);
+        }
+      };
+      ReactClass.prototype.componentWillUnmount = function () {
+        renders.delete(this);
 
-	      if (old.componentWillUnmount) {
-	        return old.componentWillUnmount.apply(this, [...arguments]);
-	      }
-	    };
+        if (old.componentWillUnmount) {
+          return old.componentWillUnmount.apply(this, [...arguments]);
+        }
+      };
 
-	    return ReactClass;
-	  };
-	}
+      return ReactClass;
+    };
+  }
 }
