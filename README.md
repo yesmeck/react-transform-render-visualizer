@@ -46,6 +46,22 @@ a production build.
 ## Usage
 Components will show up with a helpful box when monitored. This will attach itself to all components.
 
+### Select Components to Visualize
+By default this transform will display the render visualizer on every component. If you'd like to specify the components you want to visualize perform the following steps
+
+Use the following transform:
+```js
+        "transform": "react-transform-render-visualizer/lib/specify"
+```
+
+On any comnponent that you'd like the render visualizer to appear, set the static property rerenderViz to true;
+```js
+export class QueueMenu extends Component {
+	static displayName = 'QueueMenu';
+	static rerenderViz = true;
+```
+
+
 ## License
 MIT
 
