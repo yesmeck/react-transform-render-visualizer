@@ -57,8 +57,8 @@ Use the following transform:
 On any comnponent that you'd like the render visualizer to appear, set the static property rerenderViz to true;
 ```js
 export class QueueMenu extends Component {
-	static displayName = 'QueueMenu';
-	static rerenderViz = true;
+  static displayName = 'QueueMenu';
+  static rerenderViz = true;
 ```
 
 
