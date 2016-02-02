@@ -51,7 +51,7 @@ By default this transform will display the render visualizer on every component.
 
 Use the following transform:
 ```js
-        "transform": "react-transform-render-visualizer/lib/specify"
+  "transform": "react-transform-render-visualizer/lib/specify"
 ```
 
 On any comnponent that you'd like the render visualizer to appear, set the static property rerenderViz to true;
